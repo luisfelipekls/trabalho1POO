@@ -4,8 +4,6 @@ public class Venda {
 
 	private ItemVenda itens[];
 
-	private ItemVenda itemVenda;
-
 	public int getNumero() {
 		return 0;
 	}

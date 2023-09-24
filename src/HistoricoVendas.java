@@ -2,8 +2,6 @@ public class HistoricoVendas {
 
 	private Venda vendas[];
 
-	private Venda venda;
-
 	public boolean insere(Venda venda) {
 		return false;
 	}

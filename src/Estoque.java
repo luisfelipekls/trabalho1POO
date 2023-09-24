@@ -1,9 +1,6 @@
 public class Estoque {
 
 	private ItemEstoque itens[];
-
-	private ItemEstoque itemEstoque;
-
 	public int getQuantidade(int codigo) {
 		return 0;
 	}
