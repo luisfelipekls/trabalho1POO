@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class ItemVenda {
 
 	private int numero;
@@ -8,24 +10,31 @@ public class ItemVenda {
 
 	private int quantidade;
 
+	public ItemVenda(int numero, Produto produto, double precoUnitarioCobrado, int quantidade) {
+		this.numero = numero;
+		this.produto = produto;
+		this.precoUnitarioCobrado = precoUnitarioCobrado;
+		this.quantidade = quantidade;
+	}
+
 	public int getNumero() {
-		return 0;
+		return numero;
 	}
 
 	public Produto getProduto() {
-		return null;
+		return produto;
 	}
 
 	public double getPrecoUnitarioCobrado() {
-		return 0;
+		return precoUnitarioCobrado;
 	}
 
 	public double getQuantidade() {
-		return 0;
+		return quantidade;
 	}
 
 	public double getValorItem() {
-		return 0;
+		return precoUnitarioCobrado * quantidade;
 	}
 
 }
