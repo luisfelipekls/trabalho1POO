@@ -29,12 +29,16 @@ public class ItemVenda {
 		return precoUnitarioCobrado;
 	}
 
-	public double getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 
 	public double getValorItem() {
 		return precoUnitarioCobrado * quantidade;
+	}
+
+	public String toString(){
+		return "\nProduto: " + this.getProduto();
 	}
 
 }

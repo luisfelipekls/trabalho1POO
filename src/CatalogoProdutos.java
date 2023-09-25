@@ -4,9 +4,16 @@ public class CatalogoProdutos {
 
 	private ArrayList<Produto> produtos;
 
+	public CatalogoProdutos(){
+		this.produtos = new ArrayList<>();
+	}
+
 	public Produto consulta(int codigo) {
-		for(Produto produto: produtos){
-			if(produto.getCodigo() == codigo) return produto;
+		for(Produto p: produtos){
+			if(p.getCodigo() == codigo) {
+				System.out.println("Produto disponível!");
+				return p;
+			}
 		}
 
 		return null;

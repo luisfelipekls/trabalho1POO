@@ -6,6 +6,10 @@ public class HistoricoVendas {
 
 	private ArrayList<Venda> vendas;
 
+	public HistoricoVendas(){
+		this.vendas = new ArrayList<>();
+	}
+
 	public boolean insere(Venda venda) {
 		return vendas.add(venda);
 	}

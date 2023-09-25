@@ -4,6 +4,10 @@ public class Estoque {
 
 	private ArrayList<ItemEstoque> itens;
 
+	public Estoque(){
+		this.itens = new ArrayList<>();
+	}
+
 	public int getQuantidade(int codigo) {
 		int quantidadeItem = 0;
 
@@ -42,6 +46,16 @@ public class Estoque {
 			}
 		}
 		return false;
+	}
+	public ArrayList<ItemEstoque> adicionaNoEstoque(ItemEstoque item){
+		for(ItemEstoque i : itens){
+			if(i.getProduto().getCodigo() == item.getProduto().getCodigo()){
+				return null;
+			}
+		}
+
+		itens.add(item);
+		return itens;
 	}
 
 }

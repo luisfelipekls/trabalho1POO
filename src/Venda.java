@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Venda {
@@ -6,6 +8,10 @@ public class Venda {
 
 	private List<ItemVenda> itens;
 
+	public Venda(){
+		this.itens = new ArrayList<>();
+	}
+
 	public int getNumero() {
 		return numero;
 	}
@@ -13,24 +19,27 @@ public class Venda {
 	public double getSubtotal() {
 		double subtotal = 0;
 		for (ItemVenda itemVenda: itens) {
-			subtotal+=itemVenda.getValorItem()*itemVenda.getQuantidade();
+			subtotal+=itemVenda.getPrecoUnitarioCobrado()*itemVenda.getQuantidade();
 		}
 		return subtotal;
 	}
 
 	public double getDesconto() {
-		if(this.getTotalVenda()>=250.0){
+		if(this.getSubtotal()>=250.0){
 			return this.getSubtotal()*0.10;
 		}
 		return 0;
 	}
 
 	public double getImposto() {
-		return this.getSubtotal()*0.10;
+		return this.getSubtotal()*0.25;
 	}
 
 	public double getTotalVenda() {
-		return this.getSubtotal()+this.getImposto();
+		double total = 0;
+		total = (this.getSubtotal() - this.getDesconto()) + this.getImposto();
+
+		return total;
 	}
 
 	public void insereItem(int numero,Produto produto, int quantidade) {
@@ -44,8 +53,28 @@ public class Venda {
 		return numeroInicialDeItens > itens.size();
     }
 
-	public boolean imprimeRecibo() {
-		return false;
+	public void imprimeRecibo() {
+		System.out.println("----------------------------------------------------------------");
+		System.out.println("Recibo: ");
+
+        for (ItemVenda i : itens) {
+            System.out.println(i);
+			System.out.println("Quantidade: " + i.getQuantidade());
+        }
+
+		System.out.println("Subtotal: R$" + getSubtotal());
+		System.out.println("Desconto: R$" + getDesconto());
+		System.out.println("Imposto: R$" + getImposto());
+		System.out.println("Total: R$" + getTotalVenda());
 	}
 
+	public boolean fecha(){
+        return !itens.isEmpty();
+    }
+
+	@Override
+	public String toString() {
+		return "Venda #" + (numero+1) +
+				"\nItens: " + itens;
+	}
 }
