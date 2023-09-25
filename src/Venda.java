@@ -1,40 +1,48 @@
+import java.util.List;
+
 public class Venda {
 
 	private int numero;
 
-	private ItemVenda itens[];
+	private List<ItemVenda> itens;
 
 	public int getNumero() {
-		return 0;
+		return numero;
 	}
 
 	public double getSubtotal() {
-		return 0;
+		double subtotal = 0;
+		for (ItemVenda itemVenda: itens) {
+			subtotal+=itemVenda.getValorItem()*itemVenda.getQuantidade();
+		}
+		return subtotal;
 	}
 
 	public double getDesconto() {
+		if(this.getTotalVenda()>=250.0){
+			return this.getSubtotal()*0.10;
+		}
 		return 0;
 	}
 
 	public double getImposto() {
-		return 0;
+		return this.getSubtotal()*0.10;
 	}
 
 	public double getTotalVenda() {
-		return 0;
+		return this.getSubtotal()+this.getImposto();
 	}
 
-	public boolean insereItem(Produto produto, int quantidade) {
-		return false;
+	public void insereItem(int numero,Produto produto, int quantidade) {
+		ItemVenda novoItem = new ItemVenda(numero, produto, produto.getPrecoUnitario(), quantidade);
+		itens.add(novoItem);
 	}
 
 	public boolean removeItem(int numero) {
-		return false;
-	}
-
-	public boolean fecha() {
-		return false;
-	}
+		int numeroInicialDeItens = itens.size();
+		itens.removeIf(itemVenda -> itemVenda.getNumero() == numero);
+		return numeroInicialDeItens > itens.size();
+    }
 
 	public boolean imprimeRecibo() {
 		return false;

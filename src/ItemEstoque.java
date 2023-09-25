@@ -4,13 +4,21 @@ public class ItemEstoque {
 
 	private int quantidade;
 
+	public ItemEstoque(Produto produto, int quantidade) {
+		this.produto = produto;
+		this.quantidade = quantidade;
+	}
 
 	public Produto getProduto() {
-		return null;
+		return produto;
 	}
 
 	public int getQuantidade() {
-		return 0;
+		return quantidade;
+	}
+
+	public void atualizaQuantidade(int novaQuantidade){
+		quantidade = novaQuantidade;
 	}
 
 }
