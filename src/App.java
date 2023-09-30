@@ -206,6 +206,21 @@ public class App {
                     System.out.println("\n" + h.getUltimasVendas(ultimasVendas));
                     break;
 
+
+                case 6:
+
+                    if(numeroVenda <= 1){
+                        System.out.println("Nenhuma venda feita até o momento.");
+                        break;
+                    }
+
+                    System.out.println("Venda totais: " + (numeroVenda-1));
+                    System.out.print("Qual venda deseja acessar?: ");
+                    int vendaEspecifica = input.nextInt();
+
+                    System.out.println(h.getVenda(vendaEspecifica));
+                    break;
+
                 default:
                     emAndamento = false;
             }
@@ -222,7 +237,8 @@ public class App {
         System.out.println("(3) Conferir estoque");
         System.out.println("(4) Repor Estoque");
         System.out.println("(5) Imprimir últimas vendas");
-        System.out.println("(6) Sair");
+        System.out.println("(6) Ver venda específica");
+        System.out.println("(7) Sair");
         System.out.print("Escolha: ");
 
     }
