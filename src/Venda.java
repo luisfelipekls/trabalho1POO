@@ -8,8 +8,10 @@ public class Venda {
 
 	private List<ItemVenda> itens;
 
-	public Venda(){
+
+	public Venda(int numero){
 		this.itens = new ArrayList<>();
+		this.numero = numero;
 	}
 
 	public int getNumero() {
@@ -36,10 +38,7 @@ public class Venda {
 	}
 
 	public double getTotalVenda() {
-		double total = 0;
-		total = (this.getSubtotal() - this.getDesconto()) + this.getImposto();
-
-		return total;
+		return (this.getSubtotal() - this.getDesconto()) + this.getImposto();
 	}
 
 	public void insereItem(int numero,Produto produto, int quantidade) {
@@ -54,14 +53,14 @@ public class Venda {
     }
 
 	public void imprimeRecibo() {
-		System.out.println("----------------------------------------------------------------");
+		System.out.println("--------------------------------------");
 		System.out.println("Recibo: ");
 
         for (ItemVenda i : itens) {
             System.out.println(i);
-			System.out.println("Quantidade: " + i.getQuantidade());
         }
 
+		System.out.println();
 		System.out.println("Subtotal: R$" + getSubtotal());
 		System.out.println("Desconto: R$" + getDesconto());
 		System.out.println("Imposto: R$" + getImposto());
@@ -72,9 +71,13 @@ public class Venda {
         return !itens.isEmpty();
     }
 
+	public List<ItemVenda> getItens() {
+		return itens;
+	}
+
 	@Override
 	public String toString() {
-		return "Venda #" + (numero+1) +
+		return "\nVenda #"  + this.numero +
 				"\nItens: " + itens;
 	}
 }

@@ -38,7 +38,9 @@ public class ItemVenda {
 	}
 
 	public String toString(){
-		return "\nProduto: " + this.getProduto();
+		return "Produto: " + this.getProduto() +
+				", Quantidade: " + this.getQuantidade() +
+				"\n";
 	}
 
 }

@@ -58,4 +58,7 @@ public class Estoque {
 		return itens;
 	}
 
+	public ArrayList<ItemEstoque> getItens() {
+		return itens;
+	}
 }

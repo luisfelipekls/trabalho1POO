@@ -19,7 +19,7 @@ public class HistoricoVendas {
 		Collections.reverse(ultimasVendas);
 
 		if(n > vendas.size()){
-			return ultimasVendas.subList(0, vendas.size() - 1);
+			return ultimasVendas.subList(0, vendas.size());
 		}
 
 		return ultimasVendas.subList(0, n);

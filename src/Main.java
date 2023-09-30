@@ -56,12 +56,33 @@ public class Main {
         System.out.println(c.consulta(6765)); //Pesquisando fogão no catálogo.
 
         /**
+         * Venda teste armazenada; inicializando Histórico.
+         */
+
+        HistoricoVendas h = new HistoricoVendas();
+
+        Venda vArmazenada = new Venda(1);
+
+        vArmazenada.insereItem(01, geladeira, 2);
+        vArmazenada.insereItem(02, ventilador, 5);
+        vArmazenada.insereItem(03, fogao, 2);
+        vArmazenada.insereItem(04, ferro, 3);
+
+        h.insere(vArmazenada);
+
+        e.baixaEstoque(1233,2);
+        e.baixaEstoque(4461, 5);
+        e.baixaEstoque(6765, 2);
+        e.baixaEstoque(3943, 3);
+
+        /**
          * Inicialização da venda.
          */
 
+
         System.out.println("---------------------------------------------------------");
         System.out.println("Venda: ");
-        Venda v = new Venda();
+        Venda v = new Venda(2);
 
         v.insereItem(01, geladeira, 1);
         v.insereItem(02, ventilador, 3);
@@ -86,7 +107,7 @@ public class Main {
         e.baixaEstoque(3943, 4);
 
         System.out.println("---------------------------------------------------------");
-        System.out.println("Quantidade de cada item no Estoque após a venda: ");
+        System.out.println("Quantidade de cada item no Estoque após as vendas: ");
         System.out.println("Geladeira: " + estoqueGeladeira.getQuantidade()); //Nenhuma vendida.
         System.out.println("Ventilador: " + estoqueVentilador.getQuantidade()); //3 vendidos.
         System.out.println("Fogão: " + estoqueFogao.getQuantidade()); //1 vendido.
@@ -98,12 +119,14 @@ public class Main {
 
         System.out.println("---------------------------------------------------------");
 
-        HistoricoVendas h = new HistoricoVendas();
+        if(v.fecha())
+            h.insere(v);
 
-        h.insere(v);
+        System.out.println("Histórico de Vendas: ");
+        h.getUltimasVendas(10).forEach((venda -> {
+            venda.imprimeRecibo();
+            System.out.println("--------------------------------------");
+        }));
 
-        v.fecha();
-
-        System.out.println(h.getUltimasVendas(1));
     }
 }
