@@ -99,7 +99,7 @@ public class App {
                                     }
 
                                     if(i.getNumero() > numeroRemocao){
-                                        i = new ItemVenda(i.getNumero()-1, i.getProduto(),
+                                        i = new ItemVenda((i.getNumero()-1), i.getProduto(),
                                                 i.getPrecoUnitarioCobrado(), i.getQuantidade());
                                     }
                                 }
